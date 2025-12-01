@@ -51,9 +51,9 @@ To run the project locally, you can follow these steps (once the code is availab
    git clone https://github.com/yourusername/BIGBREW-REDESIGNED.git
    ```
 2. Navigate to the project folder:
-  ```bash
-  cd BIGBREW-REDESIGNED
-  ```
+   ```bash
+   cd BIGBREW-REDESIGNED
+   ```
 
 3. Open index.html in your web browser to see the progress so far.
 
