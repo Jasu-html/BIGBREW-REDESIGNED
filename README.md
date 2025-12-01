@@ -63,7 +63,7 @@ To run the project locally, you can follow these steps (once the code is availab
 
 Here’s a preview of the design concept for the BigBrew Promotional Website:
 
-![BigBrew Website Mockup](./BIGBREW-IMG-ASSETS/BIGBREW_PROMOTIONAL_WEBSITE_MOCKUP.png)  
+![BigBrew Website Mockup](./BIGBREW-IMG-ASSETS/BIGBREW-PROMOTIONAL-WEBSITE-MOCKUP.png)  
 *(This is a mockup of the website; actual implementation is still in progress)*
 
 ---
