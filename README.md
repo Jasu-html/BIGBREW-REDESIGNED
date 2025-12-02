@@ -48,7 +48,7 @@ To run the project locally, you can follow these steps (once the code is availab
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/BIGBREW-REDESIGNED.git
+   git clone https://github.com/Jasu-html/BIGBREW-REDESIGNED.git
    ```
 2. Navigate to the project folder:
    ```bash
