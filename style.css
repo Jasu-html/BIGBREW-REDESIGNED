@@ -57,7 +57,7 @@ header {
 
 /* HERO */
 .hero {
-  background-image: url(/BIGBREW-IMG-ASSETS/HERO-COVER-IMG.webp);
+  background-image: url(BIGBREW-IMG-ASSETS/HERO-COVER-IMG.webp);
   border-radius: 25px;
   margin: 20px 150px;
   padding: 40px;
@@ -504,7 +504,7 @@ header {
 
 /* OrderS */
 .order-section {
-  background-image: url(/BIGBREW-IMG-ASSETS/HERO-COVER-IMG.webp);
+  background-image: url(BIGBREW-IMG-ASSETS/HERO-COVER-IMG.webp);
   border-radius: 25px;
   margin: 80px 150px 0px 150px;
   padding: 130px 0px;
