@@ -12,6 +12,16 @@ The **BigBrew Promotional Website** redesign aims to improve the user experience
 
 ---
 
+## 🖥️ **Features**
+
+-	**Modern and Responsive Design**: The website is designed to be responsive, ensuring a smooth user experience across desktop and mobile devices.
+-	vIntuitive Navigation**: Easy access to key sections like the menu, promotions, and franchise opportunities.
+-	**Product Cards**: Beautifully designed product cards showcasing BigBrew's trending drinks and featured favorites.
+-	**Call to Action**: Prominent "Order Now" and "Become a Franchisee" buttons encourage user interaction.
+-	**Aesthetic and Themed Design**: The layout and color scheme are tailored to BigBrew’s brand identity with warm tones and appealing visuals.
+
+---
+
 ## 🛠️ **Technologies Used**
 
 The following technologies are being used to develop the BigBrew promotional website:
@@ -25,12 +35,8 @@ The following technologies are being used to develop the BigBrew promotional web
 
 ## 🚀 **Current State**
 
-As of now, the project is **still under development**, and the following aspects are still in progress:
-
-- **HTML structure**: The basic HTML structure is yet to be created.
-- **CSS layout**: A rough layout and design is yet to be created and are still being refined.
-- **JavaScript functionality**: Interactivity (such as animations, button clicks, and other dynamic features) is yet to be implemented.
-- **Responsive Design**: The mobile responsiveness is under development and needs further fine-tuning.
+You can view the live demo of the project here:
+[**Live Demo**](https://Jasu-html.github.io/BIGBREW-REDESIGNED/index.html)
 
 ---
 
@@ -86,6 +92,13 @@ This project is still in development. If you would like to contribute, fork the 
 3. Commit your changes (`git commit -am 'Add new feature'`)
 4. Push to your branch (`git push origin feature-branch`)
 5. Create a new Pull Request
+---
+
+## 🙌 **Credits**
+
+- Programmed by Arvin Berja
+- Designed and Refactored by Justin Alarcio
+- Researched by Lourice Gail De Veyra
 
 ---
 
