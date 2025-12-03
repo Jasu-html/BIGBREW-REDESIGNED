@@ -85,7 +85,7 @@ Here’s a preview of the design concept for the BigBrew Promotional Website:
 
 ## 🤝 **Contributing**
 
-This project is still in development. If you would like to contribute, fork the repository and create a pull request. Here are the basic steps for contributing:
+This project is still in development. If you would like to contribute, you can fork the repository and create a pull request. Here are the basic steps for contributing:
 
 1. Fork the repository
 2. Create a new branch (`git checkout -b feature-branch`)
