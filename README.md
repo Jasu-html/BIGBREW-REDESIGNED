@@ -48,12 +48,12 @@ To run the project locally, you can follow these steps (once the code is availab
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/bigbrew-promotional-website.git
+   git clone https://github.com/Jasu-html/BIGBREW-REDESIGNED.git
    ```
 2. Navigate to the project folder:
-  ```bash
-  cd bigbrew-promotional-website
-  ```
+   ```bash
+   cd BIGBREW-REDESIGNED
+   ```
 
 3. Open index.html in your web browser to see the progress so far.
 
@@ -63,7 +63,7 @@ To run the project locally, you can follow these steps (once the code is availab
 
 Here’s a preview of the design concept for the BigBrew Promotional Website:
 
-![BigBrew Website Mockup](./BIGBREW-IMG-ASSETS/BIGBREW_PROMOTIONAL_WEBSITE_MOCKUP.png)  
+![BigBrew Website Mockup](./BIGBREW-IMG-ASSETS/BIGBREW-PROMOTIONAL-WEBSITE-MOCKUP.png)  
 *(This is a mockup of the website; actual implementation is still in progress)*
 
 ---
@@ -79,7 +79,7 @@ Here’s a preview of the design concept for the BigBrew Promotional Website:
 
 ## 🤝 **Contributing**
 
-This project is still in development. If you would like to contribute, feel free to fork the repository and create a pull request. Here are the basic steps for contributing:
+This project is still in development. If you would like to contribute, fork the repository and create a pull request. Here are the basic steps for contributing:
 
 1. Fork the repository
 2. Create a new branch (`git checkout -b feature-branch`)
@@ -92,5 +92,5 @@ This project is still in development. If you would like to contribute, feel free
 ## 📢 **Acknowledgments**
 
 - Special thanks to **BigBrew** for providing the inspiration for this redesign.
-- Thanks to **CIS-211** for allowing me to showcase my work and develop this project as part of my final exam.
+- Thanks to **CIS-211/Sir John Roosevelt Nibato** for allowing me to showcase my work and develop this project as part of my final exam.
 
