@@ -20,14 +20,18 @@
       <div class="logo">
         <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-LIGHT.png" alt="BigBrew Logo" />
       </div>
-      <nav class="menu">
+      <nav class="menu" id="main-menu">
         <a href="#">HOME</a>
+        <a href="#about">ABOUT</a>
         <a href="#border1">MENU</a>
         <a href="#border2">PROMO</a>
         <a href="#franchise">FRANCHISE</a>
-        <a href="#about">ABOUT</a>
-        <a href="https://bigbrew.com.ph/contact" target="_blank">CONTACT</a>
+        <a href="#contact">CONTACT</a>
       </nav>
+      <!-- Hamburger icon -->
+      <button class="hamburger" id="menu-toggle" aria-expanded="false">
+        ☰ Menu
+      </button>
     </div>
   </header>
 
@@ -90,11 +94,75 @@
       </div>
     </div>
   </div>
+  <!-- Feature Cards Added Here -->
+      <div class="feature-grid">
+        <div class="feature-card">
+            <i class="fas fa-tag icon-box"></i>
+            <h3>Affordable</h3>
+            <p>Drinks starting at just ₱29.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-mug-hot icon-box"></i>
+            <h3>Quality</h3>
+            <p>Premium ingredients in every cup.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-store icon-box"></i>
+            <h3>Nationwide</h3>
+            <p>Accessible everywhere in the PH.</p>
+        </div>
+      </div>
+  <section id="about">
+      <div class="section-title">
+        <h2>Who We Are</h2>
+        <p>Serving the Filipino community with passion and excellence.</p>
+      </div>
 
+      <div class="mvv-container">
+        <!-- Vision -->
+        <div class="mvv-card">
+          <div class="mvv-icon-area">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="mvv-content">
+            <h3>VISION</h3>
+            <div class="mvv-separator"></div>
+            <p>To be the leading and most loved beverage brand in the Philippines, recognized for our commitment to quality, affordability, and excellent customer service.</p>
+          </div>
+          <div class="mvv-clouds"></div>
+        </div>
+
+        <!-- Mission -->
+        <div class="mvv-card">
+          <div class="mvv-icon-area">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <div class="mvv-content">
+            <h3>MISSION</h3>
+            <div class="mvv-separator"></div>
+            <p>To provide high-quality, delicious beverages that every Filipino can afford, serving happiness one cup at a time while supporting local communities.</p>
+          </div>
+          <div class="mvv-clouds"></div>
+        </div>
+
+        <!-- Values -->
+        <div class="mvv-card">
+          <div class="mvv-icon-area">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="mvv-content">
+            <h3>VALUES</h3>
+            <div class="mvv-separator"></div>
+            <p>We believe in Integrity, Excellence, and Community. We strive to be transparent in business and generous in service to our customers.</p>
+          </div>
+          <div class="mvv-clouds"></div>
+        </div>
+      </div>
+    </section>
   <div class="border1" id="border1">
     <img src="BIGBREW-IMG-ASSETS/PAGE-BORDER-DESIGN.png" alt="">
   </div>
-
+  
   <!-- FEATURED FAVORITES -->
   <div id="menu">
     <div class="featured-background">
@@ -141,7 +209,7 @@
         </div>
 
         <div class="see-more-container">
-          <button class="see-more">See More</button>
+          <a href="menu.html"><button class="see-more">See More</button></a>
         </div>
       </div>
     </div>
@@ -172,7 +240,130 @@
       </div>
     </div>
   </div>
+  <!-- REVIEWS SECTION -->
+  <section class="reviews-section">
+    <div class="section-title">
+      <h2>Customer Reviews</h2>
+      <p>Hear what our brew-tiful customers have to say.</p>
+    </div>
 
+    <div class="reviews-wrapper">
+      <!-- The Track moves left forever -->
+      <div class="reviews-track">
+        
+        <!-- ORIGINAL 6 CARDS -->
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"The Spanish Latte is hands down the best iced coffee I've had for this price. Absolutely creamy and strong!"</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Maria+S&background=c79a63&color=fff" alt="User">
+            <span>Maria Santos</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="review-text">"Perfect tambayan spot. The ambiance is great and the Wintermelon milk tea never disappoints."</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=John+D&background=3b2216&color=fff" alt="User">
+            <span>John Doe</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Super affordable but premium taste. The French Fries are also surprisingly crispy and good!"</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Sarah+L&background=c79a63&color=fff" alt="User">
+            <span>Sarah Lim</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"BigBrew is my daily fuel. The Kape Fudge is a game changer. Highly recommended!"</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Mark+R&background=3b2216&color=fff" alt="User">
+            <span>Mark Reyes</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Love the packaging and the service. The staff is always friendly even during busy hours."</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Jenny+P&background=c79a63&color=fff" alt="User">
+            <span>Jenny P.</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="review-text">"Tried the Fruit Tea series for a change, and it was so refreshing! Not too sweet, just right."</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Ryan+K&background=3b2216&color=fff" alt="User">
+            <span>Ryan King</span>
+          </div>
+        </div>
+
+        <!-- DUPLICATE 6 CARDS (REQUIRED FOR SEAMLESS SCROLL) -->
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"The Spanish Latte is hands down the best iced coffee I've had for this price. Absolutely creamy and strong!"</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Maria+S&background=c79a63&color=fff" alt="User">
+            <span>Maria Santos</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="review-text">"Perfect tambayan spot. The ambiance is great and the Wintermelon milk tea never disappoints."</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=John+D&background=3b2216&color=fff" alt="User">
+            <span>John Doe</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Super affordable but premium taste. The French Fries are also surprisingly crispy and good!"</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Sarah+L&background=c79a63&color=fff" alt="User">
+            <span>Sarah Lim</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"BigBrew is my daily fuel. The Kape Fudge is a game changer. Highly recommended!"</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Mark+R&background=3b2216&color=fff" alt="User">
+            <span>Mark Reyes</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="review-text">"Love the packaging and the service. The staff is always friendly even during busy hours."</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Jenny+P&background=c79a63&color=fff" alt="User">
+            <span>Jenny P.</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <p class="review-text">"Tried the Fruit Tea series for a change, and it was so refreshing! Not too sweet, just right."</p>
+          <div class="reviewer">
+            <img src="https://ui-avatars.com/api/?name=Ryan+K&background=3b2216&color=fff" alt="User">
+            <span>Ryan King</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
   <!-- FRANCHISE -->
   <div id="franchise">
     <div class="franchise-content">
@@ -185,8 +376,8 @@
         <p>BREW SUCCESS WITH BIG BREW.</p>
 
         <div class="franchise-buttons">
-          <button class="franchise-btn" id="openFranchiseBtn">Be a Franchise</button>
-          <button class="work-with-us-btn" id="openWorkBtn">Work With Us</button>
+          <a href="franchise.html"><button class="franchise-btn">Be a Franchise</button></a>
+          <a href="franchise.html#career"><button class="work-with-us-btn">Work With Us</button></a>
         </div>
       </div>
     </div>
@@ -247,59 +438,112 @@
       </form>
     </div>
   </div>
+  <div class="contact-container"></div>
+   <section id="contact">
+      <div class="section-title">
+        <h2>Get In Touch</h2>
+        <p>Have a question? We'd love to hear from you.</p>
+      </div>
+    
+      <div class="contact-container">
+        <!-- Left Side: Contact Info -->
+        <div class="contact-info">
+            <h3>Let's Chat</h3>
+            <p>Whether you're interested in franchising, have feedback on our drinks, or just want to say hello, we're here for you.</p>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <h4 style="margin:0; font-size: 1rem;">Email Us</h4>
+                    <p style="margin:0; font-size: 0.9rem;">hello@bigbrew.ph</p>
+                </div>
+            </div>
 
-  <!-- CONTACTS -->
-  <div id="contacts">
-    <footer class="footer">
-      <div class="footer-top">
-        <div class="footer-section brand">
-          <a href="#">
-          <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-DARK.png" alt="Bigbrew Logo" class="brand-logo">
-          </a>
-          <ul class="tagline">
-            <li>CRAFTING EXCEPTIONAL </li>
-            <li>COFFEE EXPERIENCES</li>
-            <li>THAT ELEVATE YOUR  </li>
-            <li>EVRYDAY MOMENTS.</li>
-          </ul>
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                <div>
+                    <h4 style="margin:0; font-size: 1rem;">Call Us</h4>
+                    <p style="margin:0; font-size: 0.9rem;">(02) 8888-1234</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                    <h4 style="margin:0; font-size: 1rem;">Headquarters</h4>
+                    <p style="margin:0; font-size: 0.9rem;">123 Coffee St., Quezon City, PH</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <a href="#" class="info-icon" style="background: #fff; border: 1px solid var(--primary);"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="info-icon" style="background: #fff; border: 1px solid var(--primary);"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="info-icon" style="background: #fff; border: 1px solid var(--primary);"><i class="fab fa-tiktok"></i></a>
+            </div>
         </div>
 
-        <div class="footer-section">
-          <h3>Explore</h3>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#border1">Menu</a></li>
-            <li><a href="#border2">Promo</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </div>
+        <!-- Right Side: Form -->
+        <div class="contact-form-card">
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                    <i class="fas fa-at form-icon"></i>
+                </div>
 
-        <div class="footer-section">
-          <h3>Company</h3>
-          <ul>
-            <li><a href="#franchise">Franchise</a></li>
-            <li><a href="https://bigbrew.com.ph/careers" target="_blank">Career</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-          </ul>
-        </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control" placeholder="Franchise Inquiry" required>
+                    <i class="fas fa-tag form-icon"></i>
+                </div>
 
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <ul class="contact">
-            <li><i class="fab fa-facebook"> </i><a href="https://www.facebook.com/BigBrewOfficial/">facebook.com/bigbrew.main</a></li>
-            <li><i class="fab fa-instagram"> </i><a href="https://www.instagram.com/bigbrew.main/#">instagram.com/bigbrew.main</a></li>
-            <li><i class="fab fa-tiktok"> </i> <a href="https://www.tiktok.com/@bigbrewmain">tiktok.com/@bigbrew.main</a></li>
-            <li><i class="fas fa-location-dot"> </i> Available nationwide</li>
-          </ul>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" placeholder="Tell us how we can help..." style="padding-top: 1rem; height: 120px;"></textarea>
+                    <i class="fas fa-comment-alt form-icon" style="top: 45px;"></i>
+                </div>
+
+                <button type="submit" class="cta" style="width: 100%;">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+            </form>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        ©2025 All Rights Reserved. | Bigbrew Food and Beverages Inc.
+    </section>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-LIGHT.png" alt="Logo" style="width: 150px; margin-bottom: 20px;">
+        <p style="font-size: 0.9rem; opacity: 0.8;">Crafting exceptional coffee experiences that elevate your everyday moments.</p>
       </div>
-    </footer>
-  </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#franchise">Franchise</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><i class="fab fa-facebook"></i> BigBrew Main</li>
+          <li><i class="fab fa-instagram"></i> @bigbrew.ph</li>
+          <li><i class="fas fa-envelope"></i> hello@bigbrew.ph</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 BigBrew Philippines. All Rights Reserved.
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 

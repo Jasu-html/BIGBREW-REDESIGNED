@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIGBREW | Franchise & Careers</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+  <!-- Font for Body -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       1. GLOBAL RESET & BASE STYLES
+       ========================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --primary: #3b2216;   /* Dark Coffee */
+      --secondary: #5a3b1a; /* Medium Brown */
+      --accent: #c8a266;    /* Gold */
+      --cream: #e8e7e5;     /* Background */
+      --text-muted: #666;
+      --card-bg: #fff8e1;
+    }
+    
+    body {
+      background: var(--cream);
+      color: #2b1a12;
+      font-family: "Georgia", serif;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* STICKY NAVBAR STYLES */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      padding: 20px 150px 0 150px; 
+      transition: padding 0.3s ease;
+    }
+
+    .nav {
+      background: #3b2216;
+      color: #fff;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      padding: 12px 28px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      font-family: "Cinzel", serif;
+      transition: border-radius 0.3s ease;
+    }
+
+    header.scrolled { padding: 0 150px; }
+    header.scrolled .nav { border-radius: 0px 0px 15px 15px; }
+
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 34px; width: auto; }
+    
+    .menu { display: flex; gap: 34px; justify-content: flex-end; align-items: center; }
+    .menu a { color: #fff; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; opacity: 0.9; }
+    .menu a:hover { opacity: 1; color: var(--accent); }
+    .menu a.active { color: var(--accent); }
+
+    .hamburger {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5em;
+      cursor: pointer;
+      padding: 0.5em;
+      display: none; 
+    }
+
+    /* PAGE SPECIFIC STYLES */
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .page-header { text-align: center; padding: 60px 0 40px; }
+    .page-header h2 { font-family: 'Cinzel Decorative', cursive; color: var(--primary); font-size: 3rem; margin-bottom: 10px; }
+    
+    .section-title h2 { font-family: 'Cinzel', serif; color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center;}
+    .section-title p { text-align: center; margin-bottom: 30px; }
+
+    /* Franchise Section */
+    #franchise { padding: 40px 0; }
+    
+    .franchise-box {
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 4rem; 
+        align-items: center;
+        background: rgba(255, 255, 255, 0.6); 
+        padding: 3rem; 
+        border-radius: 20px; 
+        border: 1px solid rgba(59, 34, 22, 0.1); 
+        margin-bottom: 4rem;
+        box-shadow: 0 8px 20px rgba(59, 34, 22, 0.15);
+    }
+    
+    .franchise-list li { 
+        margin-bottom: 1rem; 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+        color: var(--primary);
+        font-family: 'Outfit', sans-serif;
+    }
+    .franchise-list i { color: var(--accent); }
+
+    /* Buttons */
+    .btn-primary {
+        background: var(--accent);
+        color: var(--primary);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: 0.3s;
+    }
+    .btn-primary:hover { background: #b08d55; }
+
+    /* Careers Section */
+    .careers-section { border-top: 1px solid rgba(59, 34, 22, 0.2); padding-top: 4rem; }
+    
+    .apply-steps { 
+        display: flex; 
+        justify-content: space-between; 
+        gap: 2rem; 
+        margin-bottom: 4rem; 
+        flex-wrap: wrap; 
+    }
+    
+    .step-card {
+        flex: 1; 
+        min-width: 250px; 
+        background: var(--card-bg); 
+        padding: 2rem; 
+        border-radius: 20px; 
+        text-align: center; 
+        border: 1px solid rgba(59, 34, 22, 0.1);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: transform 0.3s;
+    }
+    .step-card:hover { transform: translateY(-5px); }
+
+    .step-icon { 
+        width: 60px; 
+        height: 60px; 
+        background: var(--accent); 
+        color: var(--primary); 
+        border-radius: 50%; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        margin: 0 auto 1.5rem; 
+        font-size: 1.5rem; 
+    }
+    
+    .step-card h4 { font-family: 'Cinzel', serif; color: var(--primary); margin-bottom: 10px; }
+    .step-card p { font-family: 'Outfit', sans-serif; }
+
+    /* Openings List */
+    .openings-list { display: grid; gap: 1rem; max-width: 800px; margin: 0 auto; }
+    
+    .job-card {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        background: #fff; 
+        padding: 1.5rem; 
+        border-radius: 10px; 
+        border: 1px solid rgba(59, 34, 22, 0.1);
+        transition: 0.3s;
+    }
+    .job-card:hover { border-color: var(--accent); transform: translateX(5px); }
+    
+    .job-card h4 { text-align: left; margin-bottom: 0.2rem; color: var(--primary); font-family: 'Cinzel', serif; }
+    .job-card small { color: var(--text-muted); font-family: 'Outfit', sans-serif; }
+    
+    .job-btn { 
+        padding: 0.5rem 1.2rem; 
+        font-size: 0.8rem; 
+        background: transparent; 
+        border: 1px solid var(--primary); 
+        color: var(--primary); 
+        cursor: pointer; 
+        border-radius: 20px; 
+        transition: 0.3s;
+        font-family: 'Cinzel', serif; 
+        font-weight: 700;
+    }
+    .job-btn:hover { background: var(--primary); color: #fff; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.8s ease-out; }
+
+    /* --- 8. FOOTER --- */
+    footer { background: var(--primary); color: #e0d0c0; padding-top: 60px; margin-top: 60px; border-radius: 25px 25px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 40px;padding-left: 40px; }
+    .footer-col h4 { color: var(--accent); margin-bottom: 20px; font-size: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: inherit; text-decoration: none; transition: 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-bottom { background: var(--accent); color: var(--primary); border-top: 1px solid rgba(255,255,255,0.1); text-align: center; padding: 20px; font-size: 0.9rem; }
+
+    /* To make thingss RESPONSIVE */
+    @media screen and (max-width: 1024px) {
+        header { padding: 20px 20px 0 20px; }
+        header.scrolled { padding: 0 20px; }
+        header.scrolled .nav { border-radius: 0 0 15px 15px; }
+        .franchise-box { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+        .franchise-list { display: inline-block; text-align: left; }
+    }
+
+    @media screen and (max-width: 768px) {
+        header { padding: 20px 10px 0 10px; }
+        header.scrolled { padding: 0 10px; }
+        
+        .hamburger { display: block; }
+        .menu {
+            display: none; 
+            flex-direction: column;
+            position: absolute;
+            top: 70px; right: 10px;
+            background-color: #3b2216;
+            width: 200px; padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            z-index: 100; align-items: flex-start;
+        }
+        .menu.active { display: flex; }
+
+        .page-header h2 { font-size: 2.5rem; }
+        .apply-steps { flex-direction: column; }
+        .job-card { flex-direction: column; gap: 15px; text-align: center; }
+        .job-card h4 { text-align: center; }
+        
+        .footer-top { flex-direction: column; text-align: center; gap: 30px; padding: 30px 20px; }
+        .tagline { transform: none; margin-bottom: 20px; }
+        .brand-logo { transform: none; width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <a href="index.html">
+            <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-LIGHT.png" alt="BigBrew Logo" />
+        </a>
+      </div>
+      <nav class="menu" id="main-menu">
+        <a href="index.html#home">HOME</a>
+        <a href="index.html#about">ABOUT</a>
+        <a href="menu.html">MENU</a>
+        <a href="index.html#promo">PROMO</a>
+        <a href="#" class="active">FRANCHISE</a>
+        <a href="index.html#contact">CONTACT</a>
+      </nav>
+      <!-- Hamburger icon -->
+      <button class="hamburger" id="menu-toggle" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <section id="franchise" class="fade-in">
+        <div class="page-header">
+            <h2>Partner With Us</h2>
+            <p>Brew Success with BigBrew.</p>
+        </div>
+        
+        <div class="franchise-box">
+            <div>
+                <h3>Franchise BigBrew</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-family: 'Outfit', sans-serif;">Start your business journey with a proven brand.</p>
+                <ul class="franchise-list">
+                    <li><i class="fas fa-check-circle"></i> High Brand Recognition</li>
+                    <li><i class="fas fa-check-circle"></i> Comprehensive Training</li>
+                    <li><i class="fas fa-check-circle"></i> Marketing Support</li>
+                </ul>
+                <h3 style="color:var(--accent); margin: 1.5rem 0;">Inv: ₱350k - ₱600k</h3>
+                <button class="btn-primary" onclick="alert('Thank you for inquiring! We will email you the franchise package.')">Inquire Now</button>
+            </div>
+            <div>
+                <img src="/BIGBREW-IMG-ASSETS/pexels-fauxels-3183150.jpg" style="border-radius: 15px; opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.2);" alt="Business Meeting" loading="lazy">
+            </div>
+        </div>
+
+        <div class="careers-section" id="career">
+            <div class="section-title">
+                <h2>Join Our Team</h2>
+                <p style="color: var(--text-muted);">Looking for a fun work environment? Be a Barista!</p>
+            </div>
+
+            <div class="apply-steps">
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>1. Submit Application</h4>
+                    <p style="font-size:0.9rem; color:#888; margin-top:10px;">Send your resume to our careers email or visit a branch.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-comments"></i></div>
+                    <h4>2. Interview</h4>
+                    <p style="font-size:0.9rem; color:#888; margin-top:10px;">Pass the initial screening and get interviewed by the manager.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-id-badge"></i></div>
+                    <h4>3. Get Hired!</h4>
+                    <p style="font-size:0.9rem; color:#888; margin-top:10px;">Undergo training and start brewing happiness.</p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <h2>Current Openings</h2>
+            </div>
+            
+            <div class="openings-list">
+                <div class="job-card">
+                    <div>
+                        <h4>Barista (Full-time)</h4>
+                        <small>Quezon City • Experience Preferred</small>
+                    </div>
+                    <button class="job-btn" onclick="alert('Application Sent!')">Apply</button>
+                </div>
+                <div class="job-card">
+                    <div>
+                        <h4>Store Manager</h4>
+                        <small>Makati • 1 Year Exp Required</small>
+                    </div>
+                    <button class="job-btn" onclick="alert('Application Sent!')">Apply</button>
+                </div>
+                <div class="job-card">
+                    <div>
+                        <h4>Service Crew</h4>
+                        <small>Manila • Fresh Grads Welcome</small>
+                    </div>
+                    <button class="job-btn" onclick="alert('Application Sent!')">Apply</button>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-LIGHT.png" alt="Logo" style="width: 150px; margin-bottom: 20px;">
+        <p style="font-size: 0.9rem; opacity: 0.8;">Crafting exceptional coffee experiences that elevate your everyday moments.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#franchise">Franchise</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><i class="fab fa-facebook"></i> BigBrew Main</li>
+          <li><i class="fab fa-instagram"></i> @bigbrew.ph</li>
+          <li><i class="fas fa-envelope"></i> hello@bigbrew.ph</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 BigBrew Philippines. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Sticky Navbar Logic
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 5) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile Menu Logic
+    const hamburger = document.getElementById('menu-toggle');
+    const menu = document.getElementById('main-menu');
+
+    if (hamburger && menu) {
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
+  </script>
+
+</body>
+</html>

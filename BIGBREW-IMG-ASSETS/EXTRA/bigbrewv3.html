@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIGBREW | Brewing Happiness</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@400;700;900&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- 1. VARIABLES & RESET --- */
+    :root {
+      /* Theme Colors */
+      --primary: #3b2216;   /* Dark Coffee */
+      --secondary: #5a3b1a; /* Medium Brown */
+      --accent: #c8a266;    /* Gold */
+      --cream: #e8e7e5;     /* Page Background */
+      
+      /* Mapped variables for the new sections */
+      --text-main: #3b2216;
+      --text-muted: #6c757d;
+      --bg-card: #fff8e1;
+      --glass: rgba(255, 255, 255, 0.6);
+      --border: rgba(59, 34, 22, 0.1);
+      --shadow: 0 8px 20px rgba(59, 34, 22, 0.15);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--cream);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .nav, button { font-family: 'Cinzel', serif; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; }
+    img, video { max-width: 100%; display: block; }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* --- 2. NAVBAR --- */
+    header { padding: 0 0 20px 0 ; position: sticky; top: 0; z-index: 100; }
+    
+    .nav {
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; }
+    .logo img { height: 40px; }
+
+    .menu { display: flex; gap: 25px; }
+    .menu a { color: #fff; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; }
+    .menu a:hover { color: var(--accent); }
+    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
+
+    /* --- 3. HERO SECTION --- */
+    .hero-wrapper { margin-top: 20px; }
+    .hero {
+      background: url('BIGBREW-IMG-ASSETS/HERO-COVER-IMG.webp') no-repeat center/cover;
+      border-radius: 25px;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-content { display: grid; grid-template-columns: 1fr 1fr; align-items: center; width: 100%; padding: 40px; }
+    .hero-text { z-index: 2; color: #fff; padding-left: 40px; }
+    .hero-text h1 { font-size: clamp(3rem, 5vw, 5rem); line-height: 1; margin-bottom: 15px; }
+    .hero-text h1 span { color: var(--accent); font-family: 'Cinzel Decorative', serif; }
+    .hero-text p { font-size: 1.2rem; margin-bottom: 25px; opacity: 0.9; }
+    
+    .btn {
+        padding: 0.8rem 2.5rem; border-radius: 50px; font-weight: 700; font-family: 'Cinzel', serif;
+        cursor: pointer; transition: 0.3s; border: none; font-size: 1rem; text-transform: uppercase;
+        display: inline-block;
+    }
+    .btn-primary { background: var(--accent); color: var(--primary); }
+    .btn-primary:hover { background: #b08d55; transform: translateY(-3px); }
+    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #fff; }
+
+    .hero-visuals { display: flex; justify-content: center; }
+    .cup-float { max-width: 400px; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4)); }
+
+    /* --- 4. ABOUT SECTION (UPDATED) --- */
+    #about { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+    .section-header p { color: var(--text-muted); }
+
+    /* Feature Cards */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+    .feature-card {
+        background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius);
+        border: 1px solid var(--border); box-shadow: var(--shadow);
+        text-align: center; transition: 0.3s;
+    }
+    .feature-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+    .icon-box { font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem; }
+
+    /* Mission/Vision Cards */
+    .mvv-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .mvv-card {
+        background: linear-gradient(160deg, #4b2c20, #2c1810); 
+        border-radius: 20px; overflow: hidden; text-align: center;
+        box-shadow: 0 15px 35px rgba(59, 34, 22, 0.4); border: 2px solid var(--accent);
+        transition: transform 0.4s; position: relative;
+    }
+    .mvv-card:hover { transform: translateY(-10px); }
+    .mvv-icon-area { height: 150px; display: flex; align-items: center; justify-content: center; }
+    .mvv-icon-area i { font-size: 4rem; color: var(--accent); }
+    .mvv-content { padding: 0 2rem 4rem; color: #fff; position: relative; z-index: 2; }
+    .mvv-separator { width: 50%; height: 2px; border-bottom: 2px dotted rgba(255,255,255,0.3); margin: 0 auto 1.5rem; }
+    .mvv-clouds {
+        position: absolute; bottom: -20px; left: 0; width: 100%; height: 50px;
+        background: var(--cream); border-radius: 50% 50% 0 0 / 100% 100% 0 0; transform: scaleX(1.5);
+    }
+
+    /* --- 5. MENU SECTION (NEW) --- */
+    #menu { padding: 60px 0; }
+    .menu-filters { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .filter-btn {
+        background: transparent; border: 1px solid var(--primary); color: var(--text-muted);
+        padding: 0.6rem 2rem; border-radius: 30px; cursor: pointer; transition: 0.3s;
+        font-family: 'Cinzel', serif; letter-spacing: 1px; font-weight: 600;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--accent); color: var(--primary); border-color: var(--accent); font-weight: bold; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    
+    .drink-card {
+        background: var(--bg-card); border-radius: var(--radius); overflow: hidden;
+        border: 1px solid var(--border); transition: 0.4s; position: relative;
+        display: block; box-shadow: var(--shadow);
+    }
+    .drink-card.hidden { display: none; }
+    .drink-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+    .drink-img { height: 240px; width: 100%; position: relative; overflow: hidden; }
+    .drink-img img, .drink-img video { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .drink-card:hover .drink-img img, .drink-card:hover .drink-img video { transform: scale(1.1); }
+    
+    .drink-price { 
+        position: absolute; top: 15px; right: 15px; 
+        background: rgba(59, 34, 22, 0.9); color: var(--accent); 
+        padding: 5px 12px; border-radius: 8px; font-weight: bold; font-family: 'Cinzel', serif;
+    }
+
+    .drink-info { padding: 1.5rem; text-align: left; }
+    .drink-info h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .drink-info p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .order-link { color: var(--primary); font-weight: bold; font-size: 0.9rem; text-transform: uppercase; border-bottom: 2px solid var(--accent); }
+    .order-link:hover { color: var(--accent); }
+
+    /* --- 6. FRANCHISE & CAREERS (NEW) --- */
+    #franchise { padding: 60px 0; }
+    .franchise-box {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        background: var(--glass); padding: 3rem; border-radius: 20px; 
+        border: 1px solid var(--border); margin-bottom: 4rem;
+        box-shadow: var(--shadow);
+    }
+    .franchise-list li { margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: var(--text-main); }
+    .franchise-list i { color: var(--accent); }
+
+    /* Careers */
+    .careers-section { border-top: 1px solid var(--border); padding-top: 4rem; }
+    .careers-header { text-align: center; margin-bottom: 3rem; }
+    
+    .apply-steps { display: flex; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .step-card {
+        flex: 1; min-width: 250px; background: var(--bg-card); padding: 2rem; 
+        border-radius: var(--radius); text-align: center; border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+    }
+    .step-icon { width: 60px; height: 60px; background: var(--accent); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; }
+    
+    .openings-list { display: grid; gap: 1rem; max-width: 800px; margin: 0 auto; }
+    .job-card {
+        display: flex; justify-content: space-between; align-items: center;
+        background: #fff; padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border);
+        transition: 0.3s;
+    }
+    .job-card:hover { border-color: var(--accent); transform: translateX(5px); }
+    .job-card h4 { text-align: left; margin-bottom: 0.2rem; color: var(--primary); }
+    .job-card small { color: var(--text-muted); }
+    .job-btn { padding: 0.5rem 1.2rem; font-size: 0.8rem; background: transparent; border: 1px solid var(--primary); color: var(--primary); cursor: pointer; border-radius: 20px; transition: 0.3s; }
+    .job-btn:hover { background: var(--primary); color: #fff; }
+
+/* --- 7. CONTACT SECTION (NEW SPLIT DESIGN) --- */
+    #contact { padding: 60px 0; }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 40px;
+    }
+
+    /* Left Info */
+    .contact-info h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary); }
+    .contact-info p { color: var(--secondary); margin-bottom: 2rem; }
+
+    .info-item {
+      display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;
+      padding: 1rem; background: #040302; border-radius: 12px;
+      border: 1px solid rgba(59,34,22,0.1); transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .info-item:hover { border-color: var(--accent); transform: translateX(5px); }
+    
+    .info-icon {
+      width: 50px; height: 50px; background: rgba(200, 162, 102, 0.2); color: var(--primary);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+
+    /* Right Form */
+    .contact-form-card {
+      background: #fff; padding: 2.5rem; border-radius: 20px;
+      border: 1px solid rgba(59,34,22,0.1); box-shadow: var(--shadow);
+    }
+
+    .form-group { margin-bottom: 1.5rem; position: relative; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: bold; color: var(--primary); }
+    
+    .form-control {
+      width: 100%; padding: 1rem 1rem 1rem 3rem;
+      background: #fdfbf7; border: 1px solid #ddd; border-radius: 10px;
+      color: var(--primary); font-family: 'Outfit', sans-serif; transition: 0.3s;
+    }
+    .form-control:focus { outline: none; border-color: var(--accent); background: #fff; }
+    
+    .form-icon { position: absolute; left: 15px; top: 42px; color: #999; }
+    .form-control:focus + .form-icon, .form-control:focus ~ .form-icon { color: var(--accent); }
+
+    /* --- 8. FOOTER --- */
+    footer { background: var(--primary); color: #e0d0c0; padding-top: 60px; margin-top: 60px; border-radius: 25px 25px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 40px; }
+    .footer-col h4 { color: var(--accent); margin-bottom: 20px; font-size: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: inherit; text-decoration: none; transition: 0.2s; }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .footer-bottom {  background: var(--accent); color: var(--text-main); border-top: 1px solid rgba(255,255,255,0.1); text-align: center; padding: 20px; font-size: 0.9rem; }
+    /* --- ANIMATIONS & RESPONSIVE --- */
+    @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+    
+    @media (max-width: 768px) {
+        .nav { flex-direction: column; gap: 15px; }
+        .menu-toggle { display: block; }
+        .menu { flex-wrap: wrap; justify-content: center; }
+        .hero-content { grid-template-columns: 1fr; text-align: center; }
+        .hero-text { padding: 0; order: 2; }
+        .hero-visuals { order: 1; margin-bottom: 20px; }
+        .franchise-box, .contact-container, .apply-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-LIGHT.png" alt="BigBrew">
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+      <nav class="menu" id="nav-menu">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#menu">MENU</a>
+        <a href="#franchise">FRANCHISE</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <!-- HERO -->
+    <div id="home" class="hero-wrapper">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <p>Brewing Happiness in Every Cup</p>
+            <h1>BIG <span>BREW</span></h1>
+            <p>Experience the perfect blend of premium coffee and affordability.</p>
+            <button class="btn btn-primary" onclick="location.href='#menu'">Order Now</button>
+          </div>
+          <div class="hero-visuals">
+             <img src="BIGBREW-IMG-ASSETS/HERO-COFFEE-CUP-BIGBREW.webp" class="cup-float" alt="Big Brew Cup">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT SECTION (UPDATED with Feature Cards) -->
+    <section id="about">
+      <div class="section-header">
+        <h2>Who We Are</h2>
+        <p>BigBrew started with a simple goal: Serve delicious and budget-friendly drinks to everyday Filipinos.</p>
+      </div>
+      
+      <!-- Feature Cards Added Here -->
+      <div class="feature-grid">
+        <div class="feature-card">
+            <i class="fas fa-tag icon-box"></i>
+            <h3>Affordable</h3>
+            <p>Drinks starting at just ₱29.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-mug-hot icon-box"></i>
+            <h3>Quality</h3>
+            <p>Premium ingredients in every cup.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-store icon-box"></i>
+            <h3>Nationwide</h3>
+            <p>Accessible everywhere in the PH.</p>
+        </div>
+      </div>
+
+      <!-- Mission / Vision / Values -->
+      <div class="mvv-container">
+        <div class="mvv-card">
+          <div class="mvv-icon-area"><i class="fas fa-lightbulb"></i></div>
+          <div class="mvv-content">
+            <h3>VISION</h3>
+            <div class="mvv-separator"></div>
+            <p>To be the leading and most loved beverage brand in the Philippines.</p>
+          </div>
+          <div class="mvv-clouds"></div>
+        </div>
+
+        <div class="mvv-card">
+          <div class="mvv-icon-area"><i class="fas fa-bullseye"></i></div>
+          <div class="mvv-content">
+            <h3>MISSION</h3>
+            <div class="mvv-separator"></div>
+            <p>To provide high-quality, delicious beverages that every Filipino can afford.</p>
+          </div>
+          <div class="mvv-clouds"></div>
+        </div>
+
+        <div class="mvv-card">
+          <div class="mvv-icon-area"><i class="fas fa-star"></i></div>
+          <div class="mvv-content">
+            <h3>VALUES</h3>
+            <div class="mvv-separator"></div>
+            <p>We believe in Integrity, Excellence, and Community.</p>
+          </div>
+          <div class="mvv-clouds"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU SECTION (REPLACED FEATURED FAVORITES) -->
+    <section id="menu" class="fade-in">
+        <div class="section-header">
+            <h2>Full Menu</h2>
+            <p>Explore our wide selection of freshly brewed goodness.</p>
+        </div>
+        
+        <div class="menu-filters">
+            <button class="filter-btn active" onclick="filterMenu('all')">All Drinks</button>
+            <button class="filter-btn" onclick="filterMenu('milktea')">Milk Tea</button>
+            <button class="filter-btn" onclick="filterMenu('coffee')">Iced Coffee</button>
+            <button class="filter-btn" onclick="filterMenu('fruit')">Fruit Series</button>
+            <button class="filter-btn" onclick="filterMenu('snacks')">Snacks</button>
+        </div>
+
+        <div class="grid" id="menu-grid">
+            
+            <!-- Milk Tea -->
+            <div class="drink-card" data-category="milktea">
+                <div class="drink-img">
+                    <span class="drink-price">₱39</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-pouring-milk-tea-6785/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Wintermelon</h3>
+                    <p>The classic favorite. Rich tea blended with sweet wintermelon syrup.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <div class="drink-card" data-category="milktea">
+                <div class="drink-img">
+                    <span class="drink-price">₱39</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-pouring-milk-tea-6785/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Okinawa</h3>
+                    <p>A roasted brown sugar milk tea flavor that gives a deep, caramel taste.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <div class="drink-card" data-category="milktea">
+                <div class="drink-img">
+                    <span class="drink-price">₱39</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-pouring-milk-tea-6785/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Dark Choco</h3>
+                    <p>For the chocolate lovers. Rich, dark chocolate mixed with creamy milk.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Coffee -->
+            <div class="drink-card" data-category="coffee">
+                <div class="drink-img">
+                    <span class="drink-price">₱45</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-iced-coffee-1576/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Spanish Latte</h3>
+                    <p>Our bestseller. A perfect balance of milky sweetness and strong coffee.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <div class="drink-card" data-category="coffee">
+                <div class="drink-img">
+                    <span class="drink-price">₱45</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-iced-coffee-1576/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Kape Fudge</h3>
+                    <p>Coffee infused with chocolate fudge. A mocha delight.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+             <div class="drink-card" data-category="coffee">
+                <div class="drink-img">
+                    <span class="drink-price">₱45</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-iced-coffee-1576/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Caramel Macchiato</h3>
+                    <p>Espresso stained with milk and topped with sweet caramel drizzle.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Fruit -->
+            <div class="drink-card" data-category="fruit">
+                <div class="drink-img">
+                    <span class="drink-price">₱52</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-fruit-drink-4617/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Lychee Fruit Tea</h3>
+                    <p>Refreshing fruit tea with real lychee bits and nata.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <div class="drink-card" data-category="fruit">
+                <div class="drink-img">
+                    <span class="drink-price">₱52</span>
+                    <video autoplay muted loop playsinline loading="lazy"><source src="https://cdn.coverr.co/videos/coverr-fruit-drink-4617/1080p.mp4"></video>
+                </div>
+                <div class="drink-info">
+                    <h3>Green Apple</h3>
+                    <p>Crisp and tart green apple flavor shaken with ice cold tea.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Snacks -->
+            <div class="drink-card" data-category="snacks">
+                <div class="drink-img">
+                    <span class="drink-price">₱59</span>
+                    <img src="https://images.unsplash.com/photo-1541592103007-ce9a133cd929?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Fries">
+                </div>
+                <div class="drink-info">
+                    <h3>French Fries</h3>
+                    <p>Crispy golden fries. Flavors: Cheese, BBQ, Sour Cream.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+             <div class="drink-card" data-category="snacks">
+                <div class="drink-img">
+                    <span class="drink-price">₱39</span>
+                    <img src="https://images.unsplash.com/photo-1553909489-cd47e3b4430f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Sandwich">
+                </div>
+                <div class="drink-info">
+                    <h3>Egg Sandwich</h3>
+                    <p>Soft bread with creamy egg mayo spread.</p>
+                    <a href="#" class="order-link">Order Now &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FRANCHISE SECTION (UPDATED) -->
+    <section id="franchise" class="fade-in">
+        <div class="section-header">
+            <h2>Partner With Us</h2>
+        </div>
+        
+        <div class="franchise-box">
+            <div>
+                <h3>Franchise BigBrew</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Start your business journey with a proven brand.</p>
+                <ul class="franchise-list">
+                    <li><i class="fas fa-check-circle"></i> High Brand Recognition</li>
+                    <li><i class="fas fa-check-circle"></i> Comprehensive Training</li>
+                    <li><i class="fas fa-check-circle"></i> Marketing Support</li>
+                </ul>
+                <h3 style="color:var(--accent); margin: 1.5rem 0;">Inv: ₱350k - ₱600k</h3>
+                <button class="btn btn-primary">Inquire Now</button>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="border-radius: 15px; opacity: 0.8;" alt="Business Meeting" loading="lazy">
+            </div>
+        </div>
+
+        <div class="careers-section">
+            <div class="section-header">
+                <h2>Join Our Team</h2>
+                <p style="color: var(--text-muted);">Looking for a fun work environment? Be a Barista!</p>
+            </div>
+
+            <div class="apply-steps">
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+                    <h4>1. Submit Application</h4>
+                    <p style="font-size:0.9rem; color:#888; margin-top:10px;">Send your resume to our careers email or visit a branch.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-comments"></i></div>
+                    <h4>2. Interview</h4>
+                    <p style="font-size:0.9rem; color:#888; margin-top:10px;">Pass the initial screening and get interviewed by the manager.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-id-badge"></i></div>
+                    <h4>3. Get Hired!</h4>
+                    <p style="font-size:0.9rem; color:#888; margin-top:10px;">Undergo training and start brewing happiness.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Current Openings</h2>
+            <div class="openings-list">
+                <div class="job-card">
+                    <div>
+                        <h4>Barista (Full-time)</h4>
+                        <small>Quezon City • Experience Preferred</small>
+                    </div>
+                    <button class="job-btn">Apply</button>
+                </div>
+                <div class="job-card">
+                    <div>
+                        <h4>Store Manager</h4>
+                        <small>Makati • 1 Year Exp Required</small>
+                    </div>
+                    <button class="job-btn">Apply</button>
+                </div>
+                <div class="job-card">
+                    <div>
+                        <h4>Service Crew</h4>
+                        <small>Manila • Fresh Grads Welcome</small>
+                    </div>
+                    <button class="job-btn">Apply</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Have a question? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+      </div>
+    
+      <div class="contact-container">
+        <!-- Left Side: Contact Info -->
+        <div class="contact-info">
+            <h3>Let's Chat</h3>
+            <p>Whether you're interested in franchising, have feedback on our drinks, or just want to say hello, we're here for you.</p>
+            
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <h4 style="margin:0; font-size: 1rem;">Email Us</h4>
+                    <p style="margin:0; font-size: 0.9rem;">hello@bigbrew.ph</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                <div>
+                    <h4 style="margin:0; font-size: 1rem;">Call Us</h4>
+                    <p style="margin:0; font-size: 0.9rem;">(02) 8888-1234</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                    <h4 style="margin:0; font-size: 1rem;">Headquarters</h4>
+                    <p style="margin:0; font-size: 0.9rem;">123 Coffee St., Quezon City, PH</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <a href="#" class="info-icon" style="background: #fff; border: 1px solid var(--primary);"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="info-icon" style="background: #fff; border: 1px solid var(--primary);"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="info-icon" style="background: #fff; border: 1px solid var(--primary);"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="contact-form-card">
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                    <i class="fas fa-at form-icon"></i>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control" placeholder="Franchise Inquiry" required>
+                    <i class="fas fa-tag form-icon"></i>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" placeholder="Tell us how we can help..." style="padding-top: 1rem; height: 120px;"></textarea>
+                    <i class="fas fa-comment-alt form-icon" style="top: 45px;"></i>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i></button>
+            </form>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End Container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <img src="BIGBREW-IMG-ASSETS/LOGO-FULL-BIGBREW-LIGHT.png" alt="Logo" style="width: 150px; margin-bottom: 20px;">
+        <p style="font-size: 0.9rem; opacity: 0.8;">Crafting exceptional coffee experiences that elevate your everyday moments.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#franchise">Franchise</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><i class="fab fa-facebook"></i> BigBrew Main</li>
+          <li><i class="fab fa-instagram"></i> @bigbrew.ph</li>
+          <li><i class="fas fa-envelope"></i> hello@bigbrew.ph</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 BigBrew Philippines. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Menu Filter Logic
+    function filterMenu(category) {
+        // Update active button
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Filter items
+        const items = document.querySelectorAll('.drink-card');
+        items.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+    // Toggle Mobile Menu
+    function toggleMenu() {
+        const nav = document.getElementById('nav-menu');
+        nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    // Contact Form Animation
+    function submitContactForm(event) {
+        event.preventDefault(); // Stop page refresh
+        
+        const btn = event.target.querySelector('button');
+        const originalText = btn.innerHTML;
+        
+        // Change button state
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.style.opacity = '0.8';
+        
+        // Simulate network request
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            btn.style.backgroundColor = '#4caf50'; // Green
+            btn.style.color = 'white';
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Restore button after 3 seconds
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.backgroundColor = ''; 
+                btn.style.color = '';
+                btn.style.opacity = '1';
+            }, 3000);
+        }, 1500);
+    }
+  </script>
+
+</body>
+</html>
